@@ -1,0 +1,38 @@
+<html>
+	<header>
+		<title> Auction Management </title>
+	</header>
+	<body>
+		<div id="login-form">
+			<label> Username <input type="text" placeholder="username" id="username"/></label>
+			<label> Password <input type="password" placeholder="password" id="password"/></label>
+			<button id="login-button"> Login </button>
+			<button id="cancel-button"> Cancel </button>
+		</div>
+		<script>
+		 uname = document.getElementById("username").value
+		 pwd = document.getElementById("password").value
+		 data = {username: uname, password: pwd};
+		 loginBtn = document.getElementById("login-button");
+		 loginBtn.onclick = function() {
+			 window.fetch("http://localhost:7070/app/login", {
+				 method: "POST",
+				 mode: "cors",
+				 cache: "no-cache",
+				 credentials: "include",
+				 body: JSON.stringify(data)
+			}).then(res => {
+			return res.json();
+			}).then(content => {
+				 if(content.error === undefined) {
+					 // here you load a new page with all auctions for normal user
+					 // and auction management for admin user
+					 console.log("success!")
+				 } else {
+					 console.log(content.error)
+				 }
+			});
+		 };
+		</script>
+	</body>
+</html>
