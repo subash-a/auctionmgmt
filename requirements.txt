@@ -1,0 +1,26 @@
+Auction Management and Bidding
+
+* CRUD Operations should be available to admin
+* Authenticated by a static secret API Key
+* Auction properties Start Time, End Time, Start Price, Item Name and UserID of Person Who Won
+* Normal Users should be able to see all auctions that are going on
+* Users Must be able to bid on Auction ID
+* Admin should be able to see auction status at all times
+* Once auction is complete it should be able to declare the winner as the user with highest bid
+
+type Auction {
+	 Id string
+	 Start time.Time
+	 End time.Time
+	 InitPrice float32
+	 Bids []Bid
+}
+
+type Bid {
+	 UserID string
+	 Amount float32
+}
+
+Questions
+1. What happens if there are no bids?
+2. Should the user be allowed to change/update the bid?
