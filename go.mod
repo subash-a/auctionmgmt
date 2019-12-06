@@ -1,4 +1,4 @@
-module auctionmgmt
+module github.com/subash-a/auctionmgmt
 
 go 1.13
 
